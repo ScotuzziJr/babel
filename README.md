@@ -1,2 +1,2 @@
-# babel
+# Babel
 Bookstore management system
