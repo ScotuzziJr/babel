@@ -3,12 +3,16 @@
 *Passo a passo de como realizar o deploy do projeto Django no Heroku*
 
 **Pré requisitos**
+
 - Possuir uma conta no Heroku
 - Ter o Heroku CLI instalado na máquina
 
 ### Configurações dentro do projeto
+
 Dentro do projeto Django, as configurações necessárias são:
+
 - O arquivo *Procfile*, que configura o gunicorn e serve de "ponto de partida" para o Heroku na hora do deploy, com a seguinte linha:
+
  > web: gunicorn {nome-do-projeto}.wsgi
 
 *Obs: Para saber o nome correto que está configurado no projeto, basta acessar o arquivo settings.py e procurar pela variável ROOT_URLCONF. O que deverá ser usado é o que vem antes do .extensao*
@@ -30,20 +34,25 @@ Dentro do projeto Django, as configurações necessárias são:
 - Commite as mudanças antes de continuar
 
 ## Step by step usando Heroku CLI
+
 - Depois de configurado o projeto, é só iniciar o Heroku CLI (dentro da venv do projeto) com o comando:
+
 > heroku login
 
 Se for a primeira vez usando o Heroku CLI, uma aba do navegador irá abrir pedindo para você logar com email e senha do Heroku (por isso é importante criar a conta antes)
 
 - Depois de logado, é preciso criar o projeto:
+
 > heroku create {nome-do-projeto}
 
 - Para fazer o deploy, basta dar um push no servidor do Heroku:
+
 > git push heroku master
 
 - Se o deploy der certo, você vai ver uma mensagem de sucesso e o link para acessar a aplicação
 
 ## Migration do banco
+
 Da mesma forma que é preciso dar o *migrate* para commitar as mudanças do banco de dados localmente no projeto Django, quando o projeto estiver no servidor do Heroku o *migrate* também precisa ser feito. A primeira etapa para isso é criar um banco de dados no Heroku:
 > heroku addons:create heroku-{nome-do-SGBD}:hobby-dev
 
@@ -52,9 +61,11 @@ O *addons* é um conjunto de ferramentas e serviços para desenvolver, estender 
 *Obs: essa etapa seria o equivalente ao makemigration do Django*
 
 - Agora é só rodar o *migrate*:
+
 > heroku run python manage.py migrate
 
 - Para acessar o banco de dados, basta rodar:
+
 > heroku config --app {nome-do-projeto}
 
 Esse comando vai retornar a url do banco e nela estão contidos o host, usuario, senha e nome do banco de dados (o que permite usar algum programa para acessar o banco)
