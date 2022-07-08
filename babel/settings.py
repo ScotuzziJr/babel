@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure--0x=ki-(k&s2ev44ekw19#08b_c*xp51r=ua4umrst%+xji(+g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://ms-babel.herokuapp.com/']
+# ALLOWED_HOSTS = ['https://ms-babel.herokuapp.com/']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -44,7 +45,7 @@ INSTALLED_APPS = [
     'corsheaders'
 ]
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -52,14 +53,12 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.CorsMiddleware'
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True # TESTS ONLY | TODO: SET PROPER CONFIGURATION FOR ACCESS BEFORE DEPLOY
 
-CORS_ORIGIN_WHITELIST = (
-  'http://localhost:3000/',
-)
 
 ROOT_URLCONF = 'babel.urls'
 
