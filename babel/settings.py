@@ -52,8 +52,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.CorsMiddleware',
-    'django.middleware.common.CorsMiddleware'
+    'django.middleware.CorsMiddleware'
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True # TESTS ONLY | TODO: SET PROPER CONFIGURATION FOR ACCESS BEFORE DEPLOY
